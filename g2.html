@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2025/10-2026/9 來台旅客按國籍統計</title>
+    <!-- Highcharts 腳本引入 -->
+    <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/modules/data.js"></script>
+    <script src="https://code.highcharts.com/modules/drilldown.js"></script>
+    <script src="https://code.highcharts.com/modules/exporting.js"></script>
+    <script src="https://code.highcharts.com/modules/export-data.js"></script>
+    <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f0f2f5;
+            color: #333333;
+            padding: 40px 20px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .card-container {
+            width: 100%;
+            max-width: 850px;
+            background: #ffffff;
+            border-radius: 16px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08);
+            padding: 36px;
+            margin: 0 auto;
+        }
+
+        .highcharts-figure {
+            margin: 0;
+            width: 100%;
+        }
+
+        #container {
+            width: 100%;
+            height: 480px;
+        }
+
+        .analysis-section {
+            margin-top: 32px;
+            padding-top: 24px;
+            border-top: 2px dashed #e8ecef;
+            line-height: 1.85;
+            color: #4a5568;
+        }
+
+        .analysis-section h2 {
+            font-size: 1.35rem;
+            color: #1a202c;
+            margin-bottom: 14px;
+            padding-left: 12px;
+            border-left: 5px solid #2b5c8f;
+            letter-spacing: 0.5px;
+        }
+
+        .analysis-section p {
+            font-size: 0.98rem;
+            margin-bottom: 14px;
+            text-align: justify;
+        }
+
+        .analysis-section ul {
+            padding-left: 22px;
+            margin-bottom: 16px;
+        }
+
+        .analysis-section li {
+            font-size: 0.96rem;
+            margin-bottom: 8px;
+        }
+
+        .analysis-section strong {
+            color: #2d3748;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="card-container">
+        <figure class="highcharts-figure">
+            <div id="container"></div>
+        </figure>
+
+        <!-- 分析文稿區塊 -->
+        <div class="analysis-section">
+            <h2>2025年10月至2026年9月 來台旅客地區分布分析</h2>
+            <p>
+                根據 2025 年 10 月至 2026 年 9 月（民國 114 年 10 月至 115 年 9 月）的觀光統計數據，該期間來台總旅客人數達 <strong>6,900,434 人次</strong>。透過圓餅圖分析可以發現，台灣的入境旅遊市場呈現極高比例的地域集中特性。
+            </p>
+            <p>
+                主要客源結構與市場動向分析如下：
+            </p>
+            <ul>
+                <li><strong>亞洲市場為絕對主力（76.52%）：</strong> 亞洲地區來台旅客達 5,280,306 人次，佔總體市場超過七成五。此一結果反映出地緣近便性、日韓及東南亞地區繁頻的航班接軌，以及各項旅遊推廣政策對區域內觀光意願的極大拉動。</li>
+                <li><strong>美洲市場穩居第二（13.90%）：</strong> 美洲地區來台旅客達 959,459 人次，為第二大客源地。受惠於台美經貿與科技產業合作密切，長程商務與探親需求持續穩健支撐美洲市場。</li>
+                <li><strong>歐洲市場穩定成長（7.09%）：</strong> 歐洲地區入境人數為 489,079 人次，呈現平穩發展趨勢，反映出自由行旅客與跨國文化交流對台灣深度旅遊的興趣增長。</li>
+                <li><strong>大洋洲與其他地區（2.49%）：</strong> 大洋洲地區（156,637 人次，2.27%）、非洲地區（14,165 人次，0.21%）及其他未列明地區合計占比約 2.5%，主要受限於航線距離與航班班次，仍具備客製化特色旅遊的推廣潛力。</li>
+            </ul>
+            <p>
+                整體而言，未來在國際觀光推廣策略上，建議持續深化亞洲主力市場的重複造訪率，同時藉由多元管道提升長程市場（美歐地區）旅客的停留天數與消費效益，以促進台灣觀光產業的永續與多元發展。
+            </p>
+        </div>
+    </div>
+
+    <script>
+        Highcharts.chart('container', {
+            chart: {
+                type: 'pie',
+                backgroundColor: 'transparent'
+            },
+            title: {
+                text: '2025/10 - 2026/9 來台旅客按國籍地區統計',
+                style: {
+                    fontSize: '20px',
+                    fontWeight: 'bold',
+                    color: '#1a202c'
+                }
+            },
+            subtitle: {
+                text: '資料區間：2025年10月 至 2026年9月（民國114年10月-115年9月） | 總計：6,900,434 人次',
+                style: {
+                    color: '#718096'
+                }
+            },
+            accessibility: {
+                announceNewData: {
+                    enabled: true
+                },
+                point: {
+                    valueSuffix: '%'
+                }
+            },
+            plotOptions: {
+                pie: {
+                    borderRadius: 6,
+                    allowPointSelect: true,
+                    cursor: 'pointer',
+                    dataLabels: [
+                        {
+                            enabled: true,
+                            distance: 20,
+                            format: '<b>{point.name}</b>',
+                            style: {
+                                fontSize: '13px',
+                                color: '#2d3748'
+                            }
+                        },
+                        {
+                            enabled: true,
+                            distance: '-30%',
+                            filter: {
+                                property: 'percentage',
+                                operator: '>',
+                                value: 3
+                            },
+                            format: '{point.percentage:.2f}%',
+                            style: {
+                                fontSize: '12px',
+                                color: '#ffffff',
+                                textOutline: '1px 1px 2px #333333'
+                            }
+                        }
+                    ],
+                    states: {
+                        inactive: {
+                            opacity: 0.75
+                        }
+                    }
+                }
+            },
+            tooltip: {
+                headerFormat: '<span style="font-size:12px;font-weight:bold">{point.key}</span><br>',
+                pointFormat: '<span style="color:{point.color}">●</span> 旅客人數: <b>{point.y:,.0f} 人</b><br/>' +
+                             '<span style="color:{point.color}">●</span> 市場占比: <b>{point.percentage:.2f}%</b>'
+            },
+            series: [{
+                name: '來台旅客',
+                colorByPoint: true,
+                data: [
+                    { name: '亞洲地區', y: 5280306 },
+                    { name: '美洲地區', y: 959459 },
+                    { name: '歐洲地區', y: 489079 },
+                    { name: '大洋洲地區', y: 156637 },
+                    { name: '非洲地區', y: 14165 },
+                    { name: '其他未列明', y: 788 }
+                ]
+            }]
+        });
+    </script>
+</body>
+
+</html>
